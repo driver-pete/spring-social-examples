@@ -24,6 +24,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableSocial
+@PropertySource("classpath:social.properties")
 public class SocialContext implements SocialConfigurer {
 
     @Autowired

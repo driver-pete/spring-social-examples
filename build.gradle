@@ -1,6 +1,16 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.1'
+    }
+}
+
 apply plugin: 'java'
-apply plugin: 'maven'
 apply plugin: 'eclipse'
+apply plugin: 'com.bmuschko.tomcat'
 
 group = 'net.petrikainulainen.spring.social.signin'
 version = '0.1'
@@ -71,6 +81,15 @@ dependencies {
     testCompile group: 'com.github.springtestdbunit', name: 'spring-test-dbunit', version:'1.1.0'
     testCompile group: 'org.dbunit', name: 'dbunit', version:'2.4.9'
     testCompile group: 'org.liquibase', name: 'liquibase-core', version:'3.1.1'
-    //providedCompile group: 'org.glassfish', name: 'javax.servlet', version:'3.0'
-    //providedCompile group: 'javax.servlet.jsp', name: 'jsp-api', version:'2.1'
+    
+    //The following two dependencies were declared 'providedCompile' which doesnt exist by default in gradle
+    compile group: 'org.glassfish', name: 'javax.servlet', version:'3.0'
+    compile group: 'org.glassfish', name: 'javax.servlet', version:'3.0'
+}
+
+dependencies {
+    def tomcatVersion = '7.0.59'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
