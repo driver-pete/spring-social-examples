@@ -89,6 +89,8 @@ dependencies {
     testCompile group: 'org.liquibase', name: 'liquibase-core', version:'3.1.1'
     
     provided group: 'org.glassfish', name: 'javax.servlet', version:'3.0'
+    // Here we have to duplicate javax.servlet dependency for tests.
+    // Otherwise javax.servlet is not found during gradle test execution for some reason.
     testCompile group: 'org.glassfish', name: 'javax.servlet', version:'3.0'
 }
 
