@@ -4,16 +4,14 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.bmuschko:gradle-tomcat-plugin:2.1'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-//apply plugin: 'com.bmuschko.tomcat'
 apply plugin: 'spring-boot'
-apply plugin: 'war'
+//apply plugin: 'war'
 
 group = 'net.petrikainulainen.spring.social.signin'
 version = '0.1'
@@ -23,13 +21,6 @@ description = """Spring Social Sign In MVC Normal"""
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-
-// The following is to get 'provided' scope for dependency javax.servlet:
-// https://issues.gradle.org/browse/GRADLE-784
-configurations { provided }
-sourceSets {
-    main { compileClasspath += configurations.provided }
-}
 
 repositories {
      maven { url "http://repo.maven.apache.org/maven2" }
@@ -41,6 +32,7 @@ dependencies {
     // Need to resolve this:
     // http://stackoverflow.com/questions/20725901/spring-autowire-java-lang-noclassdeffounderror
     compile("org.aspectj:aspectjweaver:1.8.5")
+    
     //testCompile("org.springframework.boot:spring-boot-starter-test")
 
     compile group: 'org.springframework', name: 'spring-aop', version:'4.0.0.RELEASE'
@@ -51,8 +43,8 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-jdbc', version:'4.0.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-orm', version:'4.0.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-tx', version:'4.0.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-web', version:'4.0.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-webmvc', version:'4.0.0.RELEASE'
+    //compile group: 'org.springframework', name: 'spring-web', version:'4.0.0.RELEASE'
+    //compile group: 'org.springframework', name: 'spring-webmvc', version:'4.0.0.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-core', version:'3.2.0.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-config', version:'3.2.0.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-taglibs', version:'3.2.0.RELEASE'
@@ -75,16 +67,13 @@ dependencies {
     compile group: 'org.jadira.usertype', name: 'usertype.core', version:'3.0.0.GA'
 
     // Web view
-    compile group: 'org.sitemesh', name: 'sitemesh', version:'3.0-alpha-2'
+    //compile group: 'org.sitemesh', name: 'sitemesh', version:'3.0-alpha-2'
     compile group: 'javax.servlet', name: 'jstl', version:'1.1.2'
     compile group: 'taglibs', name: 'standard', version:'1.1.2'
 
     // Utils
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version:'4.3.2'
     compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.1'
-    /*compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.5'
-    compile group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.5'
-    compile group: 'log4j', name: 'log4j', version:'1.2.17'*/
     compile group: 'joda-time', name: 'joda-time', version:'2.3'
  
     testCompile group: 'com.googlecode.catch-exception', name: 'catch-exception', version:'1.2.0'   
@@ -96,19 +85,8 @@ dependencies {
     testCompile group: 'com.github.springtestdbunit', name: 'spring-test-dbunit', version:'1.1.0'
     testCompile group: 'org.dbunit', name: 'dbunit', version:'2.4.9'
     testCompile group: 'org.liquibase', name: 'liquibase-core', version:'3.1.1'
-    
-    //provided group: 'org.glassfish', name: 'javax.servlet', version:'3.0'
-    // Here we have to duplicate javax.servlet dependency for tests.
-    // Otherwise javax.servlet is not found during gradle test execution for some reason.
-    //testCompile group: 'org.glassfish', name: 'javax.servlet', version:'3.0'
 }
 
-/*dependencies {
-    def tomcatVersion = '7.0.59'
-    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
-}*/
 
 test {
     testLogging {
