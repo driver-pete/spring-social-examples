@@ -86,6 +86,8 @@ You can run the application by running the following command at the command prom
 
     gradle tomcatRun
 
+If running locally, the webpage is available at http://localhost:8080/spring-social-sign-in
+
 If you want to deploy the application to Tomcat, you have to use Tomcat 7 or newer.
 
 Running Tests
