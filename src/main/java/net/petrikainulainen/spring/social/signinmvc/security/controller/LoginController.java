@@ -18,8 +18,6 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginPage() {
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
-        LOGGER.debug("Rendering login page.");
         return VIEW_NAME_LOGIN_PAGE;
     }
 }
