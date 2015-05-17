@@ -27,9 +27,4 @@ public class ExampleApplicationContext {
 
         return messageSource;
     }
-
-    @Bean
-    public PropertySourcesPlaceholderConfigurer propertyPlaceHolderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 }
