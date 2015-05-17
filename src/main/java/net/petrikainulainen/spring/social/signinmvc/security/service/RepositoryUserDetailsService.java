@@ -20,7 +20,6 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 
     private UserRepository repository;
 
-    @Autowired
     public RepositoryUserDetailsService(UserRepository repository) {
         this.repository = repository;
     }
